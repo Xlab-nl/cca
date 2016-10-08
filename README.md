@@ -47,6 +47,19 @@ This wil create the dir `certs/somename` with the following files:
 * `passphrase`: Passphrase for the `p12` file
 * `client_cert.json`: JSON representation of what we just created
 
+Example with variables
+
+```
+DAYS=30 \
+COUNTRY=NL \
+STATE=Amsterdam \
+LOCALITY=Amsterdam \
+ORGANISATION=SomeOrg \
+UNIT=tech \
+COMMON_NAME=client_cert \
+EMAIL=someone@someorg.com \
+make client name=someorg bundle=default
+```
 
 
 ### Variables
@@ -60,3 +73,4 @@ UNIT         ?= ''
 COMMON_NAME  ?= client_cert
 EMAIL        ?= ''
 ```
+
