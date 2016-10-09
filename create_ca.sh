@@ -12,6 +12,8 @@ bundle() {
         rm -rf "$DEST" && mkdir "$DEST" || exit 1
     fi
 
+	mkdir -p "$DEST"
+
     # Create password file.
     echo $(openssl rand -base64 32) > $DEST/passphrase
 
@@ -41,7 +43,6 @@ main() {
 
 	for bundle in ${bundles[@]}; do
 		export DEST="bundles/$(basename "$bundle")"
-		mkdir -p "$DEST"
 		ABS_DEST="$(cd "$DEST" && pwd -P)"
 		bundle "$bundle"
 		echo
