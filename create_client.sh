@@ -19,6 +19,8 @@ create_client_cert() {
         rm -rf "$DEST" && mkdir "$DEST" || exit 1
     fi
 
+    mkdir -p "$DEST"
+
     # Generate passphrase
     echo $(openssl rand -base64 32) > $DEST/passphrase
     
@@ -69,8 +71,6 @@ main() {
     name=($1)
     ca=($2)
     export DEST="certs/$name"
-    mkdir -p "$DEST"
-    ABS_DEST="$(cd "$DEST" && pwd =P)"
     create_client_cert "$name" "$ca"
 }
 

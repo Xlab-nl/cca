@@ -43,7 +43,6 @@ main() {
 
 	for bundle in ${bundles[@]}; do
 		export DEST="bundles/$(basename "$bundle")"
-		ABS_DEST="$(cd "$DEST" && pwd -P)"
 		bundle "$bundle"
 		echo
 	done	
