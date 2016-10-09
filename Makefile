@@ -1,6 +1,6 @@
 .PHONY: ca build bundles help
 
-export DEFAULT_BUNDLES = default
+export DEFAULT_BUNDLES = local beta acceptatie staging production
 
 # CA Settings
 export CA_DAYS        ?= 730
