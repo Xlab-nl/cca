@@ -52,8 +52,8 @@ create_client_cert() {
     "subject": "$(openssl x509 -noout -subject -in "$DEST/client.crt" | sed 's/subject=//' | tr -d ' ')",
     "issuer": "$(openssl x509 -noout -issuer -in "$DEST/client.crt" | sed 's/issuer=//' | tr -d ' ')",
     "serial": "$(openssl x509 -noout -serial -in "$DEST/client.crt" | sed 's/serial=//' | tr -d ' ')",
-    "not_before": "$(date --date="$(openssl x509 -in "$DEST/client.crt" -noout -startdate | cut -d= -f 2)" -u +"%Y-%m-%dT%H:%M:%SZ")",
-    "not_after": "$(date --date="$(openssl x509 -in "$DEST/client.crt" -noout -enddate | cut -d= -f 2)" -u +"%Y-%m-%dT%H:%M:%SZ")"
+    "not_before": "$(date -j -v"$(openssl x509 -in "$DEST/client.crt" -noout -startdate | cut -d= -f 2)" -u +"%Y-%m-%dT%H:%M:%SZ")",
+    "not_after": "$(date -j -v"$(openssl x509 -in "$DEST/client.crt" -noout -enddate | cut -d= -f 2)" -u +"%Y-%m-%dT%H:%M:%SZ")"
 }
 DVEOF
 
